@@ -43,7 +43,7 @@ It understands that:
 ## 🧠 Architecture
 
 ┌──────────────┐
-│ Resume Text │
+│ Resume Text  │
 └──────┬───────┘
 ↓
 ┌──────────────┐
@@ -70,10 +70,6 @@ It understands that:
 │ Streamlit UI │
 └──────────────┘
 
-yaml
-Copy code
-
----
 
 ## 🛠 Tech Stack
 
@@ -116,9 +112,6 @@ resume-job-matching-engine/
 ├── README.md
 └── .gitignore
 
-yaml
-Copy code
-
 ---
 
 ## 📊 Datasets
@@ -138,46 +131,51 @@ Copy code
 
 ```bash
 git clone https://github.com/yourusername/resume-job-matching-engine.git
+```
+
+```bash
 cd resume-job-matching-engine
-2️⃣ Create virtual environment
-bash
-Copy code
+```
+
+2️⃣ Create a virtual environment
+```python
 python -m venv venv
-venv\Scripts\activate
+```
+or 
+```bash
+uv sync
+```
+
+activate virtual environment
+```bash
+.venv\Scripts\activate
+```
+
 3️⃣ Install dependencies
-bash
-Copy code
+```bash
 pip install -r requirements.txt
+```
+
 4️⃣ Add datasets
-bash
-Copy code
 data/raw/resumes.csv
 data/raw/jobs.csv
+
 5️⃣ Build FAISS index (one time)
-bash
-Copy code
+```bash
 python src/build_system.py
+```
+
 6️⃣ Run backend
-bash
-Copy code
+``` bash
 uvicorn backend.api:app --reload
+```
 📍 API: http://127.0.0.1:8000
 📍 Docs: http://127.0.0.1:8000/docs
 
 7️⃣ Run frontend
-bash
-Copy code
+```bash
 streamlit run frontend/app.py
-🖥 UI Preview (example)
-vbnet
-Copy code
-+--------------------------------+
-| Resume ↔ Job Matching Engine   |
-+--------------------------------+
-| [ Paste Resume Text Here ]     |
-|                                |
-| [ Find Matching Jobs ]         |
-+--------------------------------+
+```
 
 Results:
 ✔ Data Scientist – Google
@@ -197,44 +195,3 @@ This project demonstrates:
 ✔ System design
 
 ✔ Real-world problem solving
-
-🧾 Resume Bullet Points
-pgsql
-Copy code
-• Built an AI-powered resume-to-job matching engine using Sentence-BERT and FAISS for semantic job recommendations.
-• Designed full ML pipeline including preprocessing, embeddings, vector indexing, REST API (FastAPI), and UI (Streamlit).
-• Implemented scalable similarity search over thousands of job descriptions.
-🔮 Future Improvements
-📄 PDF resume upload
-
-🧩 Skill extraction
-
-📍 Location filters
-
-💰 Salary filters
-
-📊 Analytics dashboard
-
-🐳 Docker support
-
-☁ Cloud deployment
-
-🧪 Demo Ideas
-GIF screen recording
-
-Architecture diagram image
-
-Live demo on HuggingFace Spaces
-
-📜 License
-MIT License
-
-👤 Author
-Your Name
-🔗 LinkedIn: your-link
-🐙 GitHub: your-username
-
-<div align="center">
-⭐ Star this repository if you find it useful!
-
-</div> ```
