@@ -1,199 +1,240 @@
-Resume ↔ Job Matching Engine
+<div align="center">
 
-AI-Powered Semantic Job Recommendation System
+# 🤖 Resume ↔ Job Matching Engine  
+### AI-Powered Semantic Job Recommendation System
 
-📌 Overview
+![Python](https://img.shields.io/badge/Python-3.9+-blue)
+![NLP](https://img.shields.io/badge/NLP-SentenceBERT-green)
+![FAISS](https://img.shields.io/badge/Vector_Search-FAISS-orange)
+![FastAPI](https://img.shields.io/badge/Backend-FastAPI-teal)
+![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-red)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-This project is an end-to-end AI-powered resume to job matching system that uses Natural Language Processing (NLP) and semantic similarity to recommend the most relevant job postings for a given resume.
+</div>
 
-Unlike traditional keyword matching, this system understands context and meaning using Sentence-BERT embeddings and performs fast similarity search using FAISS.
+---
 
-🚀 Features
+## ✨ What is this?
 
-Resume text matching using semantic similarity
+An **end-to-end AI system** that matches resumes to the most relevant job descriptions using **semantic understanding**, not just keywords.
 
-NLP embeddings with Sentence-BERT
+It uses:
 
-Fast vector similarity search using FAISS
+- 🧠 Sentence-BERT for embeddings  
+- ⚡ FAISS for fast similarity search  
+- 🚀 FastAPI for backend  
+- 🎨 Streamlit for UI  
 
-Job ranking based on relevance
+---
 
-REST API using FastAPI
+## 🎯 Why this project is unique
 
-Interactive web UI using Streamlit
+❌ Traditional systems → keyword matching  
+✅ This system → **meaning-based matching**
 
-Scalable architecture
+It understands that:
 
-Easily extendable for PDF upload & filters
+> “Data Scientist with NLP experience”  
+≈  
+> “Machine learning engineer working on text analytics”
 
-🧠 System Architecture
-Resume Text
-     |
-Text Preprocessing
-     |
-Sentence-BERT Embeddings
-     |
-FAISS Vector Index
-     |
-Top-K Job Matches
-     |
-FastAPI Backend
-     |
-Streamlit Frontend UI
+---
 
-🛠 Tech Stack
-Category	Tools
-Language	Python
-NLP	SentenceTransformers (SBERT)
-Vector Search	FAISS
-Backend	FastAPI
-Frontend	Streamlit
-Data	Kaggle datasets
-Deployment Ready	Docker (optional)
-📂 Project Structure
+## 🧠 Architecture
+
+┌──────────────┐
+│ Resume Text │
+└──────┬───────┘
+↓
+┌──────────────┐
+│ Preprocessing│
+└──────┬───────┘
+↓
+┌────────────────────┐
+│ Sentence-BERT Model│
+└──────┬─────────────┘
+↓
+┌──────────────┐
+│ FAISS Index │◄── Job Embeddings
+└──────┬───────┘
+↓
+┌──────────────┐
+│ Ranking Engine│
+└──────┬───────┘
+↓
+┌──────────────┐
+│ FastAPI API │
+└──────┬───────┘
+↓
+┌──────────────┐
+│ Streamlit UI │
+└──────────────┘
+
+yaml
+Copy code
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Language | Python |
+| NLP | SentenceTransformers (SBERT) |
+| Vector Search | FAISS |
+| Backend | FastAPI |
+| Frontend | Streamlit |
+| Data | Kaggle |
+| Deployment | Docker (optional) |
+
+---
+
+## 📂 Project Structure
+
 resume-job-matching-engine/
 │
 ├── data/
-│   ├── raw/
-│   └── processed/
+│ ├── raw/
+│ └── processed/
 │
 ├── models/
 │
-├── notebooks/
-│
 ├── src/
-│   ├── preprocessing.py
-│   ├── embedding.py
-│   ├── faiss_index.py
-│   ├── matcher.py
-│   └── build_system.py
+│ ├── preprocessing.py
+│ ├── embedding.py
+│ ├── faiss_index.py
+│ ├── matcher.py
+│ └── build_system.py
 │
 ├── backend/
-│   └── api.py
+│ └── api.py
 │
 ├── frontend/
-│   └── app.py
+│ └── app.py
 │
 ├── requirements.txt
 ├── README.md
 └── .gitignore
 
-📊 Datasets Used
+yaml
+Copy code
 
-Resume Dataset – Kaggle
+---
 
-Job Descriptions Dataset – Kaggle
+## 📊 Datasets
 
-(Datasets are not included in this repository due to size and license constraints.)
+📌 From Kaggle:
 
-⚙️ Installation & Setup
-1️⃣ Clone Repository
+- Resume Dataset  
+- Job Descriptions Dataset  
+
+> Datasets are not included due to license and size.
+
+---
+
+## ⚙️ Installation Guide
+
+### 1️⃣ Clone repository
+
+```bash
 git clone https://github.com/yourusername/resume-job-matching-engine.git
 cd resume-job-matching-engine
-
-2️⃣ Create Virtual Environment
+2️⃣ Create virtual environment
+bash
+Copy code
 python -m venv venv
 venv\Scripts\activate
-
-3️⃣ Install Dependencies
+3️⃣ Install dependencies
+bash
+Copy code
 pip install -r requirements.txt
-
-4️⃣ Add Datasets
-
-Place datasets in:
-
+4️⃣ Add datasets
+bash
+Copy code
 data/raw/resumes.csv
 data/raw/jobs.csv
-
-
-Ensure job description column name matches the one used in build_system.py.
-
-5️⃣ Build Vector Index (One-time)
+5️⃣ Build FAISS index (one time)
+bash
+Copy code
 python src/build_system.py
-
-
-This generates:
-
-models/index.faiss
-data/processed/jobs.csv
-
-6️⃣ Start Backend API
+6️⃣ Run backend
+bash
+Copy code
 uvicorn backend.api:app --reload
+📍 API: http://127.0.0.1:8000
+📍 Docs: http://127.0.0.1:8000/docs
 
-
-API will run at:
-
-http://127.0.0.1:8000
-
-
-Swagger UI:
-
-http://127.0.0.1:8000/docs
-
-7️⃣ Start Frontend UI
-
-Open a new terminal:
-
+7️⃣ Run frontend
+bash
+Copy code
 streamlit run frontend/app.py
+🖥 UI Preview (example)
+vbnet
+Copy code
++--------------------------------+
+| Resume ↔ Job Matching Engine   |
++--------------------------------+
+| [ Paste Resume Text Here ]     |
+|                                |
+| [ Find Matching Jobs ]         |
++--------------------------------+
 
-🖥 UI Preview
-
-Users can:
-
-Paste resume text
-
-Click Find Matching Jobs
-
-View ranked job results with similarity scores
-
-📈 Resume Impact
-
+Results:
+✔ Data Scientist – Google
+✔ NLP Engineer – Amazon
+✔ ML Engineer – Microsoft
+📈 Resume Value
 This project demonstrates:
 
-Applied NLP in real-world recruitment systems
+✔ NLP in production
 
-Vector similarity search at scale
+✔ Vector databases
 
-API development
+✔ API engineering
 
-ML system design
+✔ Full ML pipeline
 
-Full-stack data science deployment
+✔ System design
 
-🧪 Sample Resume Bullet Points
+✔ Real-world problem solving
 
-Built an AI-powered resume-to-job matching engine using Sentence-BERT and FAISS achieving semantic job recommendations.
-Designed full ML pipeline including text preprocessing, embedding generation, vector indexing, REST API (FastAPI), and interactive UI (Streamlit).
-Implemented scalable semantic search over thousands of job descriptions.
-
+🧾 Resume Bullet Points
+pgsql
+Copy code
+• Built an AI-powered resume-to-job matching engine using Sentence-BERT and FAISS for semantic job recommendations.
+• Designed full ML pipeline including preprocessing, embeddings, vector indexing, REST API (FastAPI), and UI (Streamlit).
+• Implemented scalable similarity search over thousands of job descriptions.
 🔮 Future Improvements
+📄 PDF resume upload
 
-PDF resume upload support
+🧩 Skill extraction
 
-Skill extraction using spaCy
+📍 Location filters
 
-Location & salary filtering
+💰 Salary filters
 
-Cosine similarity scoring
+📊 Analytics dashboard
 
-User authentication
+🐳 Docker support
 
-Docker deployment
+☁ Cloud deployment
 
-Cloud hosting (Render / AWS / HuggingFace Spaces)
+🧪 Demo Ideas
+GIF screen recording
 
-⚠️ Notes
+Architecture diagram image
 
-Large datasets are excluded from version control.
-
-Ensure correct dataset column names before building the system.
+Live demo on HuggingFace Spaces
 
 📜 License
-
 MIT License
 
 👤 Author
-
 Your Name
-LinkedIn: your-link
-GitHub: your-username
+🔗 LinkedIn: your-link
+🐙 GitHub: your-username
+
+<div align="center">
+⭐ Star this repository if you find it useful!
+
+</div> ```
